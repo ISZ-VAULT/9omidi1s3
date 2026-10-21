@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>رحلة العقل والبيان في جزيرة العرب | متحف رقمي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1128; --text:#e2e8f0; --royal:#1e3a8a; --gold:#d4af37; --gold-dim:rgba(212,175,55,0.3);
+  --glass:rgba(30,58,138,.15); --line:rgba(212,175,55,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;line-height:1.9;overflow-x:hidden}
+h1,h2,h3{font-family:'Amiri',serif;font-weight:700}
+
+/* ===== Sections & Images ===== */
+section{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 6vw;overflow:hidden}
+section::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;z-index:-2;filter: brightness(0.6) contrast(1.1);}
+section::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,17,40,.9),rgba(10,17,40,.6) 40%,rgba(10,17,40,.95));z-index:-1}
+
+/* صور أسطورية جديدة */
+#hero::before{background-image:url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2074&auto=format&fit=crop')} /* صحراء وغروب */
+#map::before{background-image:url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1920&auto=format&fit=crop')} /* خريطة */
+#poetry::before{background-image:url('https://images.unsplash.com/photo-1600298881974-6be191ceeda1?q=80&w=2070&auto=format&fit=crop')} /* مخطوطة إسلامية */
+#bayan::before{background-image:url('https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1920&auto=format&fit=crop')} /* قلم وحبر */
+#mualaqat::before{background-image:url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1920&auto=format&fit=crop')} /* مكة */
+#end{background:radial-gradient(circle at 50% 40%,#1e3a8a 0%,#0a1128 70%)}
+#end::before{background-image:none}
+
+.wrap{max-width:1150px;width:100%;text-align:center;position:relative;z-index:2}
+.eyebrow{color:var(--gold);letter-spacing:.3em;font-size:1rem;margin-bottom:16px;display:inline-block;font-weight:700;border-bottom:1px solid var(--gold-dim);padding-bottom:4px;}
+h2{font-size:clamp(2.4rem,5.5vw,4rem);color:#fff;margin-bottom:10px;text-shadow:0 4px 15px rgba(0,0,0,0.8)}
+.divider{width:120px;height:2px;margin:20px auto 30px;background:linear-gradient(90deg,transparent,var(--gold),transparent);position:relative}
+.divider::after{content:"◆";position:absolute;left:50%;top:-8px;transform:translateX(-50%);font-size:12px;color:var(--gold)}
+.lead{max-width:800px;margin:0 auto 50px;font-size:1.3rem;color:var(--text);font-weight:400;text-shadow:0 2px 10px rgba(0,0,0,0.9)}
+.def-box{font-size:1.1rem;color:var(--gold);font-style:italic;margin-bottom:30px;padding:10px 20px;border-right:3px solid var(--gold);background:linear-gradient(90deg, rgba(212,175,55,0.1), transparent);display:inline-block;}
+
+/* ===== Hero ===== */
+#hero h1{font-size:clamp(2.8rem,7vw,5.8rem);line-height:1.35;color:#fff;text-shadow:0 0 40px rgba(30,58,138,.9)}
+#hero .sub{font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--gold);margin:22px 0 40px;font-family:'Amiri',serif;text-shadow:0 2px 10px rgba(0,0,0,0.8)}
+.credits{display:inline-flex;gap:22px;flex-wrap:wrap;justify-content:center;padding:16px 36px;border:1px solid var(--line);border-radius:60px;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);font-size:1.1rem}
+.credits b{color:var(--gold);font-weight:700}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:30px;height:50px;border:2px solid var(--line);border-radius:20px;z-index:5}
+.scroll-hint::after{content:"";position:absolute;top:10px;left:50%;width:4px;height:8px;margin-left:-2px;background:var(--gold);border-radius:4px;animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(16px)}}
+.stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+.stars i{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:tw 3s infinite ease-in-out}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
+
+/* Stats */
+.stats{display:flex;justify-content:center;gap:40px;margin-top:50px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;align-items:center}
+.stat b{font-size:2.5rem;color:var(--gold);font-family:'Amiri',serif;}
+.stat span{font-size:1rem;color:var(--text);}
+
+/* ===== Glass cards ===== */
+.grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:rgba(10,17,40,0.7);border:1px solid rgba(226,232,240,.1);border-radius:18px;padding:34px 24px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 10px 40px rgba(0,0,0,.4);transition:transform .4s,border-color .4s,box-shadow .4s; position:relative; overflow:hidden;}
+.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .4s;}
+.card:hover{transform:translateY(-8px);border-color:var(--gold-dim);box-shadow:0 18px 50px rgba(30,58,138,.8);background:rgba(10,17,40,0.9)}
+.card:hover::before{transform:scaleX(1);transform-origin:left;}
+.card h3{color:var(--gold);font-size:1.7rem;margin-bottom:8px}
+.card p{font-size:1.05rem;font-weight:400;color:#b0c4de;}
+.card .no{font-family:'Amiri',serif;font-size:2.5rem;color:rgba(212,175,55,.3);display:block;line-height:1;margin-bottom:10px}
+
+/* ===== Verse ===== */
+.verse{margin:0 auto 54px;max-width:900px;padding:50px 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,transparent,rgba(30,58,138,.3),transparent);backdrop-filter:blur(5px)}
+.verse p{font-family:'Amiri',serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;line-height:2.2;text-shadow:0 2px 10px rgba(0,0,0,0.8)}
+.verse span{display:block;margin-top:15px;color:var(--gold);font-size:1.2rem;font-family:'Tajawal';font-weight:700;}
+.mark{color:var(--gold);margin:0 16px;font-size:0.8em;vertical-align:middle;}
+
+/* ===== Proverbs ===== */
+.proverb{font-family:'Amiri',serif;font-size:1.6rem;color:#fff;margin-bottom:12px}
+.proverb::before{content:"«";color:var(--gold)}.proverb::after{content:"»";color:var(--gold)}
+
+/* ===== Poets ===== */
+.poet{padding:34px 18px}
+.poet h3{color:#fff;font-size:1.8rem;margin-bottom:4px;}
+.poet small{color:var(--gold);display:block;margin-top:4px;font-size:1.1rem;font-family:'Amiri';}
+
+/* ===== End ===== */
+#end h2{font-size:clamp(2.2rem,4.8vw,3.4rem)}
+.team{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:40px 0 24px}
+.team .card{min-width:240px;padding:24px 30px;background:rgba(10,17,40,0.8);}
+.team .card h3{color:#fff;font-size:1.6rem;}
+.team .card p{color:var(--gold);font-weight:700;}
+.school{font-family:'Amiri',serif;font-size:2rem;color:var(--gold);margin-top:30px;display:block;}
+.sign{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:.8rem;color:rgba(226,232,240,.5);letter-spacing:.2em;direction:ltr}
+
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(60px);transition:opacity 1s ease,transform 1s ease}
+.reveal.show{opacity:1;transform:none}
+.d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}.d4{transition-delay:.6s}
+
+@media(max-width:600px){
+  section{padding:100px 5vw;background-attachment:scroll}
+  section::before{background-attachment:scroll}
+  .verse p .mark{display:block;height:0;visibility:hidden}
+  .stats{gap:20px;}
+  .stat b{font-size:2rem;}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- القسم 1: الغلاف -->
+<section id="hero">
+  <div class="stars" id="stars"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">متحف رقمي</span>
+    <h1 class="reveal d1">رحلة العقل والبيان في جزيرة العرب</h1>
+    <p class="sub reveal d2">حيث تفتقت العقول، وازدهر الأدب، وتأسست أعمدة اللغة.</p>
+    <div class="credits reveal d3">
+      <span>إدارة المشروع: <b>قميدي أيمن</b></span>
+      <span>|</span>
+      <span>تصميم وأفكار: <b>قميدي جمال</b></span>
+    </div>
+    <div class="stats reveal d4">
+      <div class="stat"><b>٧</b><span>معلقات خالدة</span></div>
+      <div class="stat"><b>+١٠</b><span>أغراض شعرية</span></div>
+      <div class="stat"><b>+٢٠٠</b><span>سنة من الإبداع</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<!-- القسم 2: خريطة العقول -->
+<section id="map">
+  <div class="wrap">
+    <span class="eyebrow reveal">التمهيد</span>
+    <h2 class="reveal d1">خريطة العقول</h2>
+    <div class="divider reveal d1"></div>
+    <div class="def-box reveal d2">لم يكن الجاهلي عصر ظلام، بل كان مرحلة ازدهار فكري وثقافي، حيث نشأت الأسواق الأدبية، وتنافست القبائل في الفصاحة والبيان.</div>
+    <div class="grid">
+      <div class="card reveal d1"><span class="no">١</span><h3>الكتب والموسوعات</h3><p>مراجع أدبية وتاريخية وثّقت ملامح العصر الجاهلي بدقة، وحفظت لنا دواوين الشعراء.</p></div>
+      <div class="card reveal d2"><span class="no">٢</span><h3>دوريات الشرق</h3><p>دراسات ومقالات علمية نقدية تناولت الأدب والتراث العربي وأبعاده الفلسفية.</p></div>
+      <div class="card reveal d3"><span class="no">٣</span><h3>حنا عتيق</h3><p>مرجع أكاديمي أسهم في دراسة الأدب العربي القديم وكشف أسرار بلاغته.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- القسم 3: نبع الشعر -->
+<section id="poetry">
+  <div class="wrap">
+    <span class="eyebrow reveal">الشعر الجاهلي</span>
+    <h2 class="reveal d1">نبع الشعر</h2>
+    <div class="divider reveal d1"></div>
+    <div class="def-box reveal d2">كان الشعر ديوان العرب، سجلوا فيه تاريخهم، وأنسابهم، وأمجادهم، فكان بحراً لا ينضب.</div>
+    <div class="verse reveal d2">
+      <p>أَمِنْ أُمِّ أَوْفَى دِمْنَةٌ لَمْ تَكَلَّمِ<span class="mark">۞</span>بِحَوْمَانَةِ الدَّرَّاجِ فَالمُتَثَلَّمِ</p>
+      <span>— زهير بن أبي سلمى</span>
+    </div>
+    <div class="grid">
+      <div class="card reveal d1"><h3>الفخر</h3><p>اعتزاز بالنفس والقبيلة والمآثر التاريخية.</p></div>
+      <div class="card reveal d2"><h3>المدح</h3><p>تمجيد الكرم والشجاعة والسيادة والجود.</p></div>
+      <div class="card reveal d3"><h3>الهجاء</h3><p>سلاح الكلمة القاسي في وجه الخصوم.</p></div>
+      <div class="card reveal d1"><h3>الرثاء</h3><p>بكاء الأحبة وتخليد مناقبهم العظيمة.</p></div>
+      <div class="card reveal d2"><h3>الغزل</h3><p>وصف الحب والوقوف على الأطلال الدارسة.</p></div>
+      <div class="card reveal d3"><h3>الوصف</h3><p>تصوير الصحراء والناقة والخيل بدقة.</p></div>
+      <div class="card reveal d1"><h3>الحكمة</h3><p>خلاصة التجارب الإنسانية في أبيات قليلة.</p></div>
+      <div class="card reveal d2"><h3>الاعتذار</h3><p>استعطاف الملوك واستدرار العفو والكرم.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- القسم 4: فنون البيان -->
+<section id="bayan">
+  <div class="wrap">
+    <span class="eyebrow reveal">الخطابة والأمثال</span>
+    <h2 class="reveal d1">فنون البيان</h2>
+    <div class="divider reveal d1"></div>
+    <div class="def-box reveal d2">كانت الخطابة منبراً للتأثير، والأمثال حكمةً متوارثة، تُختصر فيها تجارب القرون في جملة.</div>
+    <div class="grid">
+      <div class="card reveal d1"><div class="proverb">الضرب في الميت أوعظ من الكلام</div><p>عبرة تُغني عن طول الحديث مع من لا يعتبر.</p></div>
+      <div class="card reveal d2"><div class="proverb">الصيفَ ضيّعتِ اللبن</div><p>يُضرب لمن فرّط في الفرصة ثم طلبها بعد فوات الأوان.</p></div>
+      <div class="card reveal d3"><div class="proverb">رُبَّ رميةٍ من غير رامٍ</div><p>قد يصيب المخطئ أحياناً بلا قصد أو علم.</p></div>
+      <div class="card reveal d4"><div class="proverb">وافق شنٌّ طبقة</div><p>يُضرب لتوافق شخصين في الطباع والأفكار.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- القسم 5: المعلقات -->
+<section id="mualaqat">
+  <div class="wrap">
+    <span class="eyebrow reveal">المعلقات السبع</span>
+    <h2 class="reveal d1">كنوز المعلقات</h2>
+    <div class="divider reveal d1"></div>
+    <div class="def-box reveal d2">سبع معلقات خالدة، خُلّدت أسماء أصحابها في تاريخ الأدب العربي، لتصبح قمة الإبداع الجاهلي.</div>
+    <div class="grid">
+      <div class="card poet reveal d1"><span class="no">١</span><h3>امرؤ القيس</h3><small>قفا نبكِ</small></div>
+      <div class="card poet reveal d2"><span class="no">٢</span><h3>طرفة بن العبد</h3><small>لخولة أطلال</small></div>
+      <div class="card poet reveal d3"><span class="no">٣</span><h3>زهير بن أبي سلمى</h3><small>أمن أم أوفى</small></div>
+      <div class="card poet reveal d1"><span class="no">٤</span><h3>لبيد بن ربيعة</h3><small>عفت الديار</small></div>
+      <div class="card poet reveal d2"><span class="no">٥</span><h3>عمرو بن كلثوم</h3><small>ألا هبي بصحنك</small></div>
+      <div class="card poet reveal d3"><span class="no">٦</span><h3>عنترة بن شداد</h3><small>هل غادر الشعراء</small></div>
+      <div class="card poet reveal d2"><span class="no">٧</span><h3>الحارث بن حلزة</h3><small>آذنتنا ببينها أسماء</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- القسم 6: الخاتمة -->
+<section id="end">
+  <div class="wrap">
+    <span class="eyebrow reveal">شكر وتقدير</span>
+    <h2 class="reveal d1">نشكركم على مرافقتنا</h2>
+    <div class="divider reveal d1"></div>
+    <p class="lead reveal d2">نشكركم على مرافقتنا في هذه الرحلة المعرفية، متمنين لكم دوام التوفيق والنجاح.</p>
+    <div class="team reveal d3">
+      <div class="card"><h3>قميدي أيمن</h3><p>صاحب المشروع</p></div>
+      <div class="card"><h3>قميدي جمال</h3><p>مساعد الدزاين والأفكار</p></div>
+    </div>
+    <div class="school reveal d4">ثانوية محمد أوكراف</div>
+  </div>
+  <div class="sign">Designed by ISZ</div>
+</section>
+
+<script>
+// نجوم الغلاف
+(function(){
+  var box=document.getElementById('stars'),f=document.createDocumentFragment();
+  for(var i=0;i<120;i++){
+    var s=document.createElement('i');
+    s.style.top=Math.random()*100+'%';
+    s.style.left=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*3)+'s';
+    s.style.animationDuration=(2+Math.random()*3)+'s';
+    f.appendChild(s);
+  }
+  box.appendChild(f);
+})();
+
+// ظهور العناصر عند التمرير
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('show')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('show');io.unobserve(en.target);}
+    });
+  },{threshold:.15});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
